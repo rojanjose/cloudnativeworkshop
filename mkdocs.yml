@@ -1,25 +1,34 @@
 # Project information
-site_name: Workshop Setup
-site_url: https://remkohdev.github.io/workshop-setup
-site_author: IBM Developer
+site_name: Cloud Native Workshop
+site_url: https://rojanjose.github.io/cloudnativeworkshop/
+site_author: Rojan Jose
 
 # Repository
-repo_name: workshop-setup
-repo_url: https://github.com/remkohdev/workshop-setup
+repo_name: cloudnativeworkshop
+repo_url: https://rojanjose.github.io/cloudnativeworkshop/
 edit_uri: edit/master/docs
 
 # Navigation
 nav:
   - Welcome:
-    - About the workshop: README.md
-  - Workshop:
-    - Lab 0. Pre-work: pre-work/README.md
-    - Lab 1. Some Title: lab-1/README.md
-  - References:
-    - Additional Resources: resources/RESOURCES.md
-    - Contributors: resources/CONTRIBUTORS.md
-    - MkDocs Cheatsheet: resources/MKDOCS.md
-    - Admin Guide: resources/ADMIN.md
+    - Workshop Overview: README.md
+  - Environment Setup:
+    - Setup: generatedContent/workshop-setup/README.md
+    - Register for IBM Cloud: generatedContent/workshop-setup/NEWACCOUNT.md
+    - IBM Cloud Shell: generatedContent/workshop-setup/CLOUDSHELL.md
+    - Helm v3: generatedContent/workshop-setup/HELM.md
+    - Cloud Shell: pre-work/README.md
+  - Kube 101:
+    #- Lab 0. Access a Kubernetes cluster: generatedContent/kube101/Lab0/README.md
+    - Lab 1. Deploy your first application: generatedContent/kube101/Lab1/README.md
+    - Lab 2. Scale and update deployments: generatedContent/kube101/Lab2/README.md
+    - Lab 3. Build multi-tier applications: generatedContent/kube101/Lab3/README.md
+  - Helm 101:
+    #- Lab 0. Installing Helm on IKS: generatedContent/helm101/Lab0/README.md
+    - Lab 1. Deploy with Helm: generatedContent/helm101/Lab1/README.md
+    - Lab 2. Make changes with Helm: generatedContent/helm101/Lab2/README.md
+    - Lab 3. Keeping track of the deployed application: generatedContent/helm101/Lab3/README.md
+    - Lab 4. Share Helm Charts: generatedContent/helm101/Lab4/README.md
 
 ## DO NOT CHANGE BELOW THIS LINE
 
@@ -39,8 +48,10 @@ theme:
     #- navigation.instant
   palette:
     scheme: default
-    primary: blue
+    primary: black
     accent: blue
+  icon:
+    repo: fontawesome/brands/github
 
 # Plugins
 plugins:

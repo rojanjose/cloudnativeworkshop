@@ -1,0 +1,63 @@
+# This file contains all the MKDOCS navigation from the generated content. Still need to prefix the path with the right ("generatedContent") path so you can copy and paste this into parent mkdocs.yml
+
+###############################
+##  SUMMARY.md for workshop-setup
+################################
+
+# Home page for repo 
+# [workshop-setup](generatedContent/workshop-setup/README.md)
+
+nav 
+ - Welcome:
+    - About the workshop: README.md
+- Docs:
+    - Calico: CALICO.md
+    - IBM Cloud Shell: CLOUDSHELL.md
+    - Labs at CognitiveClass.ai: COGNITIVECLASS.md
+    - Create Free Kubernetes Cluster: FREEIKSCLUSTER.md
+    - Grant Cluster Permissions: GRANTCLUSTER.md
+    - Helm v3: HELM.md
+    - Jenkins: JENKINS.md
+    - MkDocs: MKDOCS.md
+    - New IBM Cloud: NEWACCOUNT.md
+    - Source-to-Image (S2I): S2I.md
+    - Upgrade IBM Cloud account to Pay-As-You-Go: PAYASYOUGO.md
+    - Connect to RedHat OpenShift Kubernetes Service (ROKS): ROKS.md
+    - Access OpenShift Cluster at OpenLabs: OPENLABS.md
+- References:
+    - Additional Resources: references/RESOURCES.md
+    - Contributors: references/CONTRIBUTORS.md
+
+###############################
+##  SUMMARY.md for kube101
+################################
+
+# Home page for repo 
+# [kube101](generatedContent/kube101/README.md)
+
+nav 
+ - Welcome:
+    - About the workshop: README.md
+- Workshop:
+    - Lab 0. Access a Kubernetes cluster: Lab0/README.md
+    - Lab 1. Deploy your first application: Lab1/README.md
+    - Lab 2. Scale and update deployments: Lab2/README.md
+    - Lab 3. Build multi-tier applications: Lab3/README.md
+
+###############################
+##  SUMMARY.md for helm101
+################################
+
+# Home page for repo 
+# [helm101](generatedContent/helm101/README.md)
+
+nav 
+ - Welcome:
+    - About the workshop: README.md
+- Workshop:
+    - Lab 0. Installing Helm on IKS: Lab0/README.md
+    - Lab 1. Deploy with Helm: Lab1/README.md
+    - Lab 2. Make changes with Helm: Lab2/README.md
+    - Lab 3. Keeping track of the deployed application: Lab3/README.md
+    - Lab 4. Share Helm Charts: Lab4/README.md
+

@@ -1,0 +1,5 @@
+# Add repo URLs for labs in this file with no blank lines
+repos:
+    - url: https://github.com/IBM/workshop-setup
+    - url: https://github.com/IBM/kube101
+    - url: https://github.com/IBM/helm101
