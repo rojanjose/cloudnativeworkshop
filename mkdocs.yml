@@ -12,12 +12,13 @@ edit_uri: edit/master/docs
 nav:
   - Welcome:
     - Workshop Overview: README.md
-  - Environment Setup:
-    - Setup: generatedContent/workshop-setup/README.md
-    - Register for IBM Cloud: generatedContent/workshop-setup/NEWACCOUNT.md
+  - Environment Setup: 
+    - Setup instructions: generatedContent/workshop-setup/README.md
+    - Create IBM Cloud Account: generatedContent/workshop-setup/NEWACCOUNT.md
+    - Connect to OpenShift: generatedContent/workshop-setup/ROKS.md
     - IBM Cloud Shell: generatedContent/workshop-setup/CLOUDSHELL.md
     - Helm v3: generatedContent/workshop-setup/HELM.md
-    - Cloud Shell: pre-work/README.md
+
   - Kube 101:
     #- Lab 0. Access a Kubernetes cluster: generatedContent/kube101/Lab0/README.md
     - Lab 1. Deploy your first application: generatedContent/kube101/Lab1/README.md
