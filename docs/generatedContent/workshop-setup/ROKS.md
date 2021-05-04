@@ -18,8 +18,6 @@ Most of the labs are run using CLI commands.
 
 The IBM Cloud Shell available at [https://shell.cloud.ibm.com](https://shell.cloud.ibm.com) is preconfigured with the full IBM Cloud CLI and tons of plug-ins and tools that you can use to manage apps, resources, and infrastructure.
 
-Another great online shell is available via the `Theia - Cloud IDE (With OpenShift)` at [https://labs.cognitiveclass.ai](https://labs.cognitiveclass.ai). The Cognitive Class shell comes with a Docker Engine and Helm v3 at the time of writing.
-
 ## Login to OpenShift
 
 1. In a new browser tab, go to [https://cloud.ibm.com/kubernetes/clusters?platformType=openshift](https://cloud.ibm.com/kubernetes/clusters?platformType=openshift).
@@ -55,7 +53,7 @@ Another great online shell is available via the `Theia - Cloud IDE (With OpenShi
    oc get nodes -o wide
    ```
 
-    ![oc get nodes](images/roks/cognitiveclass-get-nodes.png)
+    ![oc get nodes](images/roks/ibmcloud-get-nodes.png)
 
 1. Optionally, for convenience, set an environment variable for your cluster name.
 
