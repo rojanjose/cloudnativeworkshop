@@ -15,9 +15,8 @@ nav:
   - Environment Setup: 
     - Setup instructions: generatedContent/workshop-setup/README.md
     - Create IBM Cloud Account: generatedContent/workshop-setup/NEWACCOUNT.md
-    - Connect to OpenShift: generatedContent/workshop-setup/ROKS.md
-    - IBM Cloud Shell: generatedContent/workshop-setup/CLOUDSHELL.md
-    - Helm v3: generatedContent/workshop-setup/HELM.md
+    - Setup CLI Environment: generatedContent/workshop-setup/CLOUDSHELL.md
+    - Connect to cluster: generatedContent/workshop-setup/ROKS.md
 
   - Kube 101:
     #- Lab 0. Access a Kubernetes cluster: generatedContent/kube101/Lab0/README.md
