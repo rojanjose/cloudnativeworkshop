@@ -6,9 +6,10 @@ Welcome to the Cloud Native 101 Workshop! In the workshop you will learn about f
 |  May 7th - 8am to 12pm EST  |  |  |
 | :--- | :--- | :--- |
 | Welcome, Introductions & Objectives | All | 10 mins |
-| [Lecture: Overview of Docker](https://ibm.box.com/s/328idco3ckh96myeyiu6rpp5e11pm6db) with [demo](generatedContent/docker101/README.md)  | John Zaccone | 30 mins |
+| [Lecture: Overview of Docker](https://ibm.box.com/s/akaxcvfjkg1b81w5giruru6ijy5pkwn2) with demo  | John Zaccone | 30 mins |
+| Homework: [Hands-On Docker](https://ibm-developer.gitbook.io/docker101/) | | |
 | BREAK (8:40 am) | | 10 mins |
-| [Lecture: Overview of Kubernetes](https://ibm.box.com/s/cza8e9auaq4tzofzge5fajdo7lkm9ans)  | John Zaccone | 30 mins |
+| [Lecture: Overview of Kubernetes](https://ibm.box.com/s/53wpcwyo7uvlwiwruf5j4s01yfif2xfc)  | John Zaccone | 30 mins |
 | [Lab: Kubernetes 101](generatedContent/kube101/Lab1/README.md) | John Zaccone| 60 mins |
 | BREAK (10:20 am) | | 10 mins |
 | [Lecture: Helm](https://ibm.box.com/s/pvo38w66qiaxslzbmbqfqpbv4qcqrimv) | Rojan Jose | 30 mins |
