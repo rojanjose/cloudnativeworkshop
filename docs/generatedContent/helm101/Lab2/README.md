@@ -15,80 +15,80 @@ In this part of the lab we will update the previously deployed application [Gues
 
 1. This is an **optional** step that is not technically required to update your running app. The reason for doing this step is "house keeping" - you want to have the correct files for the current configuration that you have deployed. This avoids making mistakes if you have future updates or even rollbacks. In this updated configuration, we remove the Redis slaves. To have the directory match the configuration, move/archive or simply remove the Redis slave files from the guestbook repo tree:
 
-   ``` console
-   cd guestbook/v1
-   rm redis-slave-service.yaml
-   rm redis-slave-deployment.yaml
-   ```
+      ``` console
+      cd guestbook/v1
+      rm redis-slave-service.yaml
+      rm redis-slave-deployment.yaml
+      ```
 
-   > Note: you can reclaim these files later with a `git checkout -- <filename>` command, if desired
+      > Note: you can reclaim these files later with a `git checkout -- <filename>` command, if desired
 
 1. Delete the Redis slave service and pods:
 
-   ```console
-   $ kubectl delete svc redis-slave --namespace default
-   service "redis-slave" deleted
-   $ kubectl delete deployment redis-slave --namespace default
-   deployment.extensions "redis-slave" deleted
-   ```
+      ```console
+      $ kubectl delete svc redis-slave --namespace default
+      service "redis-slave" deleted
+      $ kubectl delete deployment redis-slave --namespace default
+      deployment.extensions "redis-slave" deleted
+      ```
 
 1. Update the guestbook service from `LoadBalancer` to `NodePort` type:
 
-   ```console
-   sed -i.bak 's/LoadBalancer/NodePort/g' guestbook-service.yaml
-   ```
+      ```console
+      sed -i.bak 's/LoadBalancer/NodePort/g' guestbook-service.yaml
+      ```
 
    > Note: you can reset the files later with a `git checkout -- <filename>` command, if desired
 
 1. Delete the guestbook service:
 
-   ```console
-   kubectl delete svc guestbook --namespace default
-   ```
+      ```console
+      kubectl delete svc guestbook --namespace default
+      ```
 
 1. Re-create the service with `NodePort` type:
 
-   ```console
-   kubectl create -f guestbook-service.yaml
-   ```
+      ```console
+      kubectl create -f guestbook-service.yaml
+      ```
 
 1. Check the updates, using
 
-   ```console
-   kubectl get all --namespace default
-   ```
+      ```console
+      kubectl get all --namespace default
+      ```
 
-   ```console
-   $ kubectl get all --namespace default
-   NAME                                READY     STATUS    RESTARTS   AGE
-   pod/guestbook-v1-7fc76dc46-9r4s7    1/1       Running   0          1h
-   pod/guestbook-v1-7fc76dc46-hspnk    1/1       Running   0          1h
-   pod/guestbook-v1-7fc76dc46-sxzkt    1/1       Running   0          1h
-   pod/redis-master-5d8b66464f-pvbl9   1/1       Running   0          1h
+      ```console
+      $ kubectl get all --namespace default
+      NAME                                READY     STATUS    RESTARTS   AGE
+      pod/guestbook-v1-7fc76dc46-9r4s7    1/1       Running   0          1h
+      pod/guestbook-v1-7fc76dc46-hspnk    1/1       Running   0          1h
+      pod/guestbook-v1-7fc76dc46-sxzkt    1/1       Running   0          1h
+      pod/redis-master-5d8b66464f-pvbl9   1/1       Running   0          1h
 
-   NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
-   service/guestbook      NodePort    172.21.45.29    <none>        3000:31989/TCP   31s
-   service/kubernetes     ClusterIP   172.21.0.1      <none>        443/TCP          9d
-   service/redis-master   ClusterIP   172.21.232.61   <none>        6379/TCP         1h
+      NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+      service/guestbook      NodePort    172.21.45.29    <none>        3000:31989/TCP   31s
+      service/kubernetes     ClusterIP   172.21.0.1      <none>        443/TCP          9d
+      service/redis-master   ClusterIP   172.21.232.61   <none>        6379/TCP         1h
 
-   NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
-   deployment.apps/guestbook-demo   3/3     3            3           1h
-   deployment.apps/redis-master     1/1     1            1           1h
+      NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+      deployment.apps/guestbook-demo   3/3     3            3           1h
+      deployment.apps/redis-master     1/1     1            1           1h
 
-   NAME                                      DESIRED   CURRENT   READY     AGE
-   replicaset.apps/guestbook-v1-7fc76dc46    3         3         3         1h
-   replicaset.apps/redis-master-5d8b66464f   1         1         1         1h
-   ```
+      NAME                                      DESIRED   CURRENT   READY     AGE
+      replicaset.apps/guestbook-v1-7fc76dc46    3         3         3         1h
+      replicaset.apps/redis-master-5d8b66464f   1         1         1         1h
+      ```
 
-   > Note: The service type has changed (to `NodePort`) and a new port has been allocated (`31989` in this output case) to the guestbook service. All `redis-slave` resources have been removed.
+      > Note: The service type has changed (to `NodePort`) and a new port has been allocated (`31989` in this output case) to the guestbook service. All `redis-slave` resources have been removed.
 
 1. View the guestbook
 
-   Get the public IP of one of your nodes:
+      Get the public IP of one of your nodes:
 
-   ```console
-   kubectl get nodes -o wide
-   ```
+      ```console
+      kubectl get nodes -o wide
+      ```
 
    Navigate to the IP address plus the node port that printed earlier.
 
@@ -126,19 +126,19 @@ Enough talking about the theory. Now let's give it a go!
 
 1. First, lets check the app we deployed in Lab 1 with Helm. This can be done by checking the Helm releases:
 
-   ```console
-   helm list -n helm-demo
-   ```
+      ```console
+      helm list -n helm-demo
+      ```
 
-   Note that we specify the namespace. If not specified, it uses the current namespace context. You should see output similar to the following:
+      Note that we specify the namespace. If not specified, it uses the current namespace context. You should see output similar to the following:
 
-   ```console
-   $ helm list -n helm-demo
-   NAME           NAMESPACE REVISION  UPDATED                                 STATUS    CHART            APP VERSION
-   guestbook-demo helm-demo 1         2020-02-24 18:08:02.017401264 +0000 UTC deployed  guestbook-0.2.0
-   ```
+      ```console
+      $ helm list -n helm-demo
+      NAME           NAMESPACE REVISION  UPDATED                                 STATUS    CHART            APP VERSION
+      guestbook-demo helm-demo 1         2020-02-24 18:08:02.017401264 +0000 UTC deployed  guestbook-0.2.0
+      ```
 
-   The `list` command provides the list of deployed charts (releases) giving information of chart version, namespace, number of updates (revisions) etc.
+      The `list` command provides the list of deployed charts (releases) giving information of chart version, namespace, number of updates (revisions) etc.
 
 1. We now know the release is there from step 1., so we can update the application:
 
@@ -205,13 +205,13 @@ Enough talking about the theory. Now let's give it a go!
 
 1. View the guestbook
 
-   Get the public IP of one of your nodes:
+      Get the public IP of one of your nodes:
 
-   ```console
-   kubectl get nodes -o wide
-   ```
+      ```console
+      kubectl get nodes -o wide
+      ```
 
-   Navigate to the IP address plus the node port that printed earlier.
+      Navigate to the IP address plus the node port that printed earlier.
 
 ## Conclusion
 

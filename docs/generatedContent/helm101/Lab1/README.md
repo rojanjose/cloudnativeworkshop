@@ -18,38 +18,38 @@ git clone https://github.com/IBM/guestbook.git
 
 1. Use the configuration files in the cloned Git repository to deploy the containers and create services for them by using the following commands:
 
-   ```console
-   $ cd guestbook/v1
+      ```console
+      $ cd guestbook/v1
 
-   $ kubectl create -f redis-master-deployment.yaml
-   deployment.apps/redis-master created
+      $ kubectl create -f redis-master-deployment.yaml
+      deployment.apps/redis-master created
 
-   $ kubectl create -f redis-master-service.yaml
-   service/redis-master created
+      $ kubectl create -f redis-master-service.yaml
+      service/redis-master created
 
-   $ kubectl create -f redis-slave-deployment.yaml
-   deployment.apps/redis-slave created
+      $ kubectl create -f redis-slave-deployment.yaml
+      deployment.apps/redis-slave created
 
-   $ kubectl create -f redis-slave-service.yaml
-   service/redis-slave created
+      $ kubectl create -f redis-slave-service.yaml
+      service/redis-slave created
 
-   $ kubectl create -f guestbook-deployment.yaml
-   deployment.apps/guestbook-v1 created
+      $ kubectl create -f guestbook-deployment.yaml
+      deployment.apps/guestbook-v1 created
 
-   $ kubectl create -f guestbook-service.yaml
-   service/guestbook created
-   ```
+      $ kubectl create -f guestbook-service.yaml
+      service/guestbook created
+      ```
 
-   Refer to the [guestbook README](https://github.com/IBM/guestbook) for more details.
+      Refer to the [guestbook README](https://github.com/IBM/guestbook) for more details.
 
 1. View the guestbook:
 
    You can now play with the guestbook that you just created by opening it in a browser (it might take a few moments for the guestbook to come up).
 
-    * **Local Host:**
+   * **Local Host:**
     If you are running Kubernetes locally, view the guestbook by navigating to `http://localhost:3000` in your browser.
 
-    * **Remote Host:**
+   * **Remote Host:**
 
     1. To view the guestbook on a remote host, locate the external IP and port of the load balancer in the **EXTERNAL-IP** and **PORTS** columns of the `$ kubectl get services` output.
 
@@ -115,87 +115,87 @@ kubectl create namespace helm-demo
 
 1. Install the app as a Helm chart:
 
-   ```console
-   $ cd helm101/charts
+      ```console
+      $ cd helm101/charts
 
-   $ helm install guestbook-demo ./guestbook/ --namespace helm-demo
-   NAME: guestbook-demo
-   ...
-   ```
+      $ helm install guestbook-demo ./guestbook/ --namespace helm-demo
+      NAME: guestbook-demo
+      ...
+      ```
 
-   You should see output similar to the following:
+      You should see output similar to the following:
 
-   ```console
-   NAME: guestbook-demo
-   LAST DEPLOYED: Mon Feb 24 18:08:02 2020
-   NAMESPACE: helm-demo
-   STATUS: deployed
-   REVISION: 1
-   TEST SUITE: None
-   NOTES:
-   1. Get the application URL by running these commands:
-     NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-         You can watch the status of by running 'kubectl get svc -w guestbook-demo --namespace helm-demo'
-     export SERVICE_IP=$(kubectl get svc --namespace helm-demo guestbook-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-     echo http://$SERVICE_IP:3000
-   ```
+      ```console
+      NAME: guestbook-demo
+      LAST DEPLOYED: Mon Feb 24 18:08:02 2020
+      NAMESPACE: helm-demo
+      STATUS: deployed
+      REVISION: 1
+      TEST SUITE: None
+      NOTES:
+      1. Get the application URL by running these commands:
+      NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+            You can watch the status of by running 'kubectl get svc -w guestbook-demo --namespace helm-demo'
+      export SERVICE_IP=$(kubectl get svc --namespace helm-demo guestbook-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+      echo http://$SERVICE_IP:3000
+      ```
 
-   The chart install performs the Kubernetes deployments and service creations of the redis master and slaves, and the guestbook app, as one. This is because the chart is a collection of files that describe a related set of Kubernetes resources and Helm manages the creation of these resources via the Kubernetes API.
+      The chart install performs the Kubernetes deployments and service creations of the redis master and slaves, and the guestbook app, as one. This is because the chart is a collection of files that describe a related set of Kubernetes resources and Helm manages the creation of these resources via the Kubernetes API.
 
-   Check the deployment:
+      Check the deployment:
 
-   ```console
-   kubectl get deployment guestbook-demo --namespace helm-demo
-   ```
+      ```console
+      kubectl get deployment guestbook-demo --namespace helm-demo
+      ```
 
-   You should see output similar to the following:
+      You should see output similar to the following:
 
-   ```console
-   $ kubectl get deployment guestbook-demo --namespace helm-dem
-   NAME             READY   UP-TO-DATE   AVAILABLE   AGE
-   guestbook-demo   2/2     2            2           51m
-   ```
+      ```console
+      $ kubectl get deployment guestbook-demo --namespace helm-dem
+      NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+      guestbook-demo   2/2     2            2           51m
+      ```
 
-   To check the status of the running application pods, use:
+      To check the status of the running application pods, use:
 
-   ```console
-   kubectl get pods --namespace helm-demo
-   ```
+      ```console
+      kubectl get pods --namespace helm-demo
+      ```
 
-   You should see output similar to the following:
+      You should see output similar to the following:
 
-   ```console
-   $ kubectl get pods --namespace helm-demo
-   NAME                            READY     STATUS    RESTARTS   AGE
-   guestbook-demo-6c9cf8b9-jwbs9   1/1       Running   0          52m
-   guestbook-demo-6c9cf8b9-qk4fb   1/1       Running   0          52m
-   redis-master-5d8b66464f-j72jf   1/1       Running   0          52m
-   redis-slave-586b4c847c-2xt99    1/1       Running   0          52m
-   redis-slave-586b4c847c-q7rq5    1/1       Running   0          52m
-   ```
+      ```console
+      $ kubectl get pods --namespace helm-demo
+      NAME                            READY     STATUS    RESTARTS   AGE
+      guestbook-demo-6c9cf8b9-jwbs9   1/1       Running   0          52m
+      guestbook-demo-6c9cf8b9-qk4fb   1/1       Running   0          52m
+      redis-master-5d8b66464f-j72jf   1/1       Running   0          52m
+      redis-slave-586b4c847c-2xt99    1/1       Running   0          52m
+      redis-slave-586b4c847c-q7rq5    1/1       Running   0          52m
+      ```
 
-   To check the services, use:
+      To check the services, use:
 
-   ```console
-   kubectl get services --namespace helm-demo
-   ```
+      ```console
+      kubectl get services --namespace helm-demo
+      ```
 
-   ```console
-   $ kubectl get services --namespace helm-demo
-   NAME             TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
-   guestbook-demo   LoadBalancer   172.21.43.244    <pending>     3000:31367/TCP   52m
-   redis-master     ClusterIP      172.21.12.43     <none>        6379/TCP         52m
-   redis-slave      ClusterIP      172.21.176.148   <none>        6379/TCP         52m
-   ```
+      ```console
+      $ kubectl get services --namespace helm-demo
+      NAME             TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+      guestbook-demo   LoadBalancer   172.21.43.244    <pending>     3000:31367/TCP   52m
+      redis-master     ClusterIP      172.21.12.43     <none>        6379/TCP         52m
+      redis-slave      ClusterIP      172.21.176.148   <none>        6379/TCP         52m
+      ```
 
 1. View the guestbook:
 
    You can now play with the guestbook that you just created by opening it in a browser (it might take a few moments for the guestbook to come up).
 
-    * **Local Host:**
+   * **Local Host:**
     If you are running Kubernetes locally, view the guestbook by navigating to `http://localhost:3000` in your browser.
 
-    * **Remote Host:**
+   * **Remote Host:**
 
     1. To view the guestbook on a remote host, locate the external IP and the port of the load balancer by following the "NOTES" section in the install output. The commands will be similar to the following:
 
